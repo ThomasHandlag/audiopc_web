@@ -5,6 +5,8 @@ import 'dart:typed_data';
 import 'package:audiopc_interface/audiopc_interface.dart';
 import 'package:web/web.dart' as web;
 
+export 'package:audiopc_interface/audiopc_interface.dart';
+
 /// AudiopcWeb is the main class that implements the audio player functionality using the Web Audio API.
 class AudiopcWeb with PlayerStateMixin implements AudiopcInterface {
   late final web.AudioContext _audioContext;
@@ -291,6 +293,20 @@ class AudiopcWeb with PlayerStateMixin implements AudiopcInterface {
     return result;
   }
 
+  void playSource(String uri) {
+    if (uri.startsWith('http://') || uri.startsWith('https://')) {
+      setUrlSource(uri);
+    } else {
+      setFileSource(uri);
+    }
+  }
+
+  void setPlaybackRate(double rate) {
+    if (_currentSource != null) {
+      _currentSource!.playbackRate.value = rate;
+    }
+  }
+
   /// Seeks to a position in milliseconds.
   @override
   void seek(int positionMillis) {
@@ -326,12 +342,32 @@ class AudiopcWeb with PlayerStateMixin implements AudiopcInterface {
   }
 
   @override
-  Uint8List getThumbnail(String url) {
-    // TODO: implement getThumbnail
+  Uint8List? getThumbnail(String url, {int maxSize = 20 * 1024 * 1024}) {
     throw UnimplementedError();
   }
 
   @override
-  // TODO: implement positionStream
-  Stream<int> get positionStream => throw UnimplementedError();
+  Stream<int> get positionStream => positionController.stream;
+
+  void setPeakFilter(double cutoffHz, double q, double gainDB) {
+
+  }
+
+  void setLowShelfFilter(double cutoffHz, double q, double gainDB) {
+
+  }
+
+  void setHighShelfFilter(double cutoffHz, double q, double gainDB) {
+
+  }
+
+  void setBandPassFilter(double cutoffHz, double q) {
+
+  }
+
+  void setNotchFilter(double cutoffHz, double q) {
+
+  }
+
+  void clearFilters() {}
 }

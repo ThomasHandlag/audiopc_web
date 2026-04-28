@@ -1,8 +1,8 @@
 name: audiopc_web
-description: "A new Flutter package project."
+description: "Audiopc web implementation"
 version: 0.0.1
-homepage:
-publish_to: none
+homepage: https://app.bustify.dev
+repository: https://github.com/thomashandlag/audiopc_web
 
 environment:
   sdk: ^3.11.1
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   web: ^1.1.1
-  audiopc_interface: ^0.0.1+1
+  audiopc_interface: ^0.0.1+2
 
 dev_dependencies:
   flutter_test:
