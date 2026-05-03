@@ -120,26 +120,27 @@ class _MyAppState extends State<MyApp> {
 
   MetaData? _metadata;
 
-  void _getMetadata() {
+  void _getMetadata() async {
     final url = sourceController.text.trim();
     if (url.isEmpty) {
       return;
     }
 
-    final metadata = player.getMetadata(url);
+    final metadata = await player.getMetadata(url);
     setState(() {
       _metadata = metadata;
     });
   }
 
-  void _getThumb() {
+  void _getThumb() async {
     final url = sourceController.text.trim();
     if (url.isEmpty) {
       return;
     }
 
-    final thumbData = player.getThumbnail(url);
+    final thumbData = await player.getThumbnail(url);
     if (thumbData == null) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('No thumbnail available for this audio file'),
@@ -194,7 +195,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _rate = rate;
     });
-    player.setPlaybackRate(rate);
+    player.setRate(rate);
   }
 
   @override

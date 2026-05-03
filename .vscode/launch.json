@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter: Launch example (web-server)",
+      "type": "dart",
+      "request": "launch",
+      "program": "example/lib/main.dart",
+      "args": ["-d", "web-server", "--web-port=8080"]
+    }, 
+    {
+      "name": "Flutter: Launch example (chrome)",
+      "type": "dart",
+      "request": "launch",
+      "program": "example/lib/main.dart",
+      "args": ["-d", "chrome"]
+    }
+  ]
+}

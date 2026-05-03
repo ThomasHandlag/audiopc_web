@@ -79,7 +79,7 @@ class _FilterControlsState extends State<FilterControls> {
                   bandPass = value.clamp(20, 20000);
                 });
 
-                player.setBandPassFilter(bandPass, q);
+                player.setBandPassHz(bandPass, q);
               },
               label: 'Band-pass frequency',
               max: 20000,
@@ -91,7 +91,7 @@ class _FilterControlsState extends State<FilterControls> {
                 setState(() {
                   notch = value.clamp(20, 20000);
                 });
-                player.setNotchFilter(notch, q);
+                player.setNotchFilter(notch, q, 0);
               },
               label: 'Notch frequency',
               max: 20000,
